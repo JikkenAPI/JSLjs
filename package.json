@@ -1,0 +1,19 @@
+{
+  "name": "jsljs",
+  "version": "1.0.0",
+  "description": "A transpiler for the Jikken Shading Language.",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OpenBlockCraft/JSLjs.git"
+  },
+  "author": "Jeffrey Hutchinson",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/OpenBlockCraft/JSLjs/issues"
+  },
+  "homepage": "https://github.com/OpenBlockCraft/JSLjs#readme"
+}
