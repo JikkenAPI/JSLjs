@@ -63,6 +63,9 @@ function main(argv) {
     shader.processShader(sh);
 	 var gatherPassTokens = gatherPass.gatherPass(shader.lex);
 	 shader.resetLex();
+
+	 console.log("Shader: " + sh.file);
+	 console.log(JSON.stringify(gatherPassTokens));
   });
 }
 
