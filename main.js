@@ -21,6 +21,7 @@
 // SOFTWARE.
 
 var shader = require('./lib/processShader');
+var gatherPass = require('./lib/gatherPass');
 
 function main(argv) {
   if (argv.length < 4) {
@@ -60,6 +61,8 @@ function main(argv) {
 
   shaders.forEach((sh) => {
     shader.processShader(sh);
+	 var gatherPassTokens = gatherPass.gatherPass(shader.lex);
+	 shader.resetLex();
   });
 }
 
