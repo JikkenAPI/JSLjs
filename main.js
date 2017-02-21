@@ -62,10 +62,12 @@ function main(argv) {
   shaders.forEach((sh) => {
     shader.processShader(sh);
 	 var gatherPassTokens = gatherPass.gatherPass(shader.lex);
-	 shader.resetLex();
+	 shader.rewindLex();
 
 	 console.log("Shader: " + sh.file);
 	 console.log(JSON.stringify(gatherPassTokens));
+
+	 shader.resetLex();
   });
 }
 
