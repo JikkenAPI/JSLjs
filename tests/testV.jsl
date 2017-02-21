@@ -43,13 +43,15 @@ UniformBuffer Model
 	mat4 model;
 };
 
-Conn main(InData data)
+mat4 getMVP(mat4 proj, mat4 view, mat4 model)
 {
-	Conn output;
+	mat4 pv = mul(proj, view);
+	return mul(pv, model);
+}
 
-	vec4 mvp = mul(mul(proj, view), model);
-	output.position = mul(mvp, data.position);
-	output.texCoord = data.texCoord;
-
-	return output;
+void main()
+{
+	mat4 mvp = getMVP(Camera.proj, Camera.view, Model.model);
+	Conn.position = mul(mvp, InData.position);
+	Conn.texCoord = InData.texCoord;
 }

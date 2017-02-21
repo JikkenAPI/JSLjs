@@ -33,10 +33,8 @@ out FragOut
 
 uniform Sampler2D diffuseTexture;
 
-FragOut main(Conn input)
+void main()
 {
-	FragOut output;
-	output.color = texture2D(diffuseTexture, input.texCoord);
-	output.color.a = 1.0;
-	return output;
+	FragOut.color = texture2D(diffuseTexture, Conn.texCoord);
+	FragOut.color.a = 1.0;
 }
