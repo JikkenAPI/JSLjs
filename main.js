@@ -24,51 +24,51 @@ var shader = require('./lib/processShader');
 var gatherPass = require('./lib/gatherPass');
 
 function main(argv) {
-  if (argv.length < 4) {
-    console.log("Usage: node main.js --vertex <vertex shader file> --fragment <fragment shader file>")
-    return;
-  }
+	if (argv.length < 4) {
+	console.log("Usage: node main.js --vertex <vertex shader file> --fragment <fragment shader file>")
+	return;
+	}
 
-  var shaders = [];
+	var shaders = [];
 
-  for (var i = 0; i < argv.length; i++) {
-    switch (argv[i]) {
-      case '--vertex':
-        if (i+1 == argv.length) {
-          console.log("Next argument must be a vertex shader file.");
-          return;
-        }
+	for (var i = 0; i < argv.length; i++) {
+		switch (argv[i]) {
+			case '--vertex':
+				if (i+1 == argv.length) {
+					console.log("Next argument must be a vertex shader file.");
+					return;
+				}
 
-        shaders.push({
-          type: 'VERTEX',
-          file: argv[i + 1]
-        });
-        i++;
-        break;
-      case '--fragment':
-        if (i+1 == argv.length) {
-          console.log("Next argument must be a fragment shader file.")
-          return;
-        }
+				shaders.push({
+					type: 'VERTEX',
+					file: argv[i + 1]
+				});
+				i++;
+				break;
+			case '--fragment':
+				if (i+1 == argv.length) {
+					console.log("Next argument must be a fragment shader file.")
+					return;
+				}
 
-        shaders.push({
-          type: 'FRAGMENT',
-          file: argv[i + 1]
-        });
-        break;
-    }
-  }
+				shaders.push({
+					type: 'FRAGMENT',
+					file: argv[i + 1]
+				});
+				break;
+		}
+	}
 
-  shaders.forEach((sh) => {
-    shader.processShader(sh);
-	 var gatherPassTokens = gatherPass.gatherPass(shader.lex);
-	 shader.rewindLex();
+	shaders.forEach((sh) => {
+		shader.processShader(sh);
+		var gatherPassTokens = gatherPass.gatherPass(shader.lex);
+		shader.rewindLex();
 
-	 console.log("Shader: " + sh.file);
-	 console.log(JSON.stringify(gatherPassTokens));
+		console.log("Shader: " + sh.file);
+		console.log(JSON.stringify(gatherPassTokens));
 
-	 shader.resetLex();
-  });
+		shader.resetLex();
+	});
 }
 
 main(process.argv);
