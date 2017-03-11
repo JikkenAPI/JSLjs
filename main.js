@@ -25,8 +25,8 @@ var gatherPass = require('./lib/gatherPass');
 
 function main(argv) {
 	if (argv.length < 4) {
-	console.log("Usage: node main.js --vertex <vertex shader file> --fragment <fragment shader file>")
-	return;
+		console.log("Usage: node main.js --vertex <vertex shader file> --fragment <fragment shader file>")
+		return;
 	}
 
 	var shaders = [];
