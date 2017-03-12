@@ -31,7 +31,7 @@ out FragOut
 	attribute(location=JIKKEN_TARGET0) vec4 color;
 };
 
-uniform Sampler2D diffuseTexture;
+uniform Sampler2D diffuseTexture : attribute(location=0);
 
 void main()
 {
